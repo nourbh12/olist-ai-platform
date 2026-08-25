@@ -1,8 +1,16 @@
+# Data
+data/raw/
+data/bronze/
+data/silver/
+data/gold/
+
+# Python
 .venv/
 __pycache__/
 *.pyc
 
+# Environment
 .env
 
-data/raw/
-
+# Spark
+*.log
