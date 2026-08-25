@@ -30,11 +30,19 @@ def ingest_csv_to_bronze(
         spark.read
         .option("header", True)
         .option("inferSchema", True)
+        .option("multiLine", True)
+        .option("quote", '"')
+        .option("escape", '"')
+        .option("mode", "PERMISSIVE")
         .csv(str(input_path))
     )
 
-    print(f"Rows: {df.count()}")
+    row_count = df.count()
+
+    print(f"Rows: {row_count}")
     print(f"Columns: {len(df.columns)}")
+    print(f"Schema:")
+    df.printSchema()
 
     (
         df.write
@@ -43,7 +51,6 @@ def ingest_csv_to_bronze(
     )
 
     print(f"Written to: {output_path}")
-
 
 def main():
     spark = create_spark_session()
