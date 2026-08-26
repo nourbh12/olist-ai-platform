@@ -30,7 +30,7 @@ def main():
         ).count()
 
         invalid_installments = df.filter(
-            F.col("payment_installments") < 1
+            F.col("payment_installments") < 0
         ).count()
 
         invalid_sequential = df.filter(

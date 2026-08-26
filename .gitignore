@@ -14,3 +14,7 @@ __pycache__/
 
 # Spark
 *.log
+
+# Airflow
+pipelines/airflow/logs/
+pipelines/airflow/airflow.db

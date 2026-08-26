@@ -1,0 +1,23 @@
+services:
+
+  airflow:
+    build:
+      context: .
+      dockerfile: docker/airflow/Dockerfile
+
+    ports:
+      - "8080:8080"
+
+    volumes:
+      - ./pipelines/airflow/dags:/opt/airflow/dags
+      - ./pipelines/airflow/logs:/opt/airflow/logs
+      - ./pipelines/airflow/plugins:/opt/airflow/plugins
+      - ./pipelines:/opt/olist-ai-platform/pipelines
+      - ./data:/opt/olist-ai-platform/data
+      - ./src:/opt/olist-ai-platform/src
+
+    environment:
+      AIRFLOW__CORE__LOAD_EXAMPLES: "false"
+      AIRFLOW__CORE__DAGS_ARE_PAUSED_AT_CREATION: "false"
+
+    command: standalone
