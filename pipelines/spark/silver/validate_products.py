@@ -56,11 +56,20 @@ def main():
             "invalid_photo_quantity": invalid_photos,
         }
 
+        all_passed = True
+
         for name, value in checks.items():
             if value == 0:
                 print(f"PASS: {name}")
             else:
                 print(f"FAIL: {name} -> {value}")
+                all_passed = False
+
+        if all_passed:
+            print("\nAll Silver products quality checks passed.")
+        else:
+            print("\nSome Silver products quality checks failed.")
+            raise ValueError("Silver products quality checks failed.")
 
     finally:
         spark.stop()

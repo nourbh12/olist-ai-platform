@@ -136,6 +136,7 @@ def main():
             print("All Silver orders quality checks passed.")
         else:
             print("Some Silver orders quality checks failed.")
+            raise ValueError("Silver orders quality checks failed.")
 
     finally:
         spark.stop()

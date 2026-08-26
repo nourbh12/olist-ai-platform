@@ -45,11 +45,22 @@ def main():
             "null_zip_prefix": null_zip,
         }
 
+        all_passed = True
+
         for name, value in checks.items():
             if value == 0:
                 print(f"PASS: {name}")
             else:
                 print(f"FAIL: {name} -> {value}")
+                all_passed = False
+
+        if all_passed:
+            print("\nAll Silver geolocation quality checks passed.")
+        else:
+            print("\nSome Silver geolocation quality checks failed.")
+            raise ValueError(
+                "Silver geolocation quality checks failed."
+            )
 
     finally:
         spark.stop()

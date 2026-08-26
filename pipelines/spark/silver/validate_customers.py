@@ -46,11 +46,20 @@ def main():
             "invalid_zip_codes": invalid_zip,
         }
 
+        all_passed = True
+
         for name, value in checks.items():
             if value == 0:
                 print(f"PASS: {name}")
             else:
                 print(f"FAIL: {name} -> {value}")
+                all_passed = False
+
+        if all_passed:
+            print("\nAll Silver customers quality checks passed.")
+        else:
+            print("\nSome Silver customers quality checks failed.")
+            raise ValueError("Silver customers quality checks failed.")
 
     finally:
         spark.stop()

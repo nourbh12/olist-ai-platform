@@ -52,12 +52,23 @@ def main():
             "null_english_category": null_english,
         }
 
+        all_passed = True
+
         for name, value in checks.items():
 
             if value == 0:
                 print(f"PASS: {name}")
             else:
                 print(f"FAIL: {name} -> {value}")
+                all_passed = False
+
+        if all_passed:
+            print("\nAll Silver category quality checks passed.")
+        else:
+            print("\nSome Silver category quality checks failed.")
+            raise ValueError(
+                "Silver category quality checks failed."
+            )
 
     finally:
         spark.stop()
