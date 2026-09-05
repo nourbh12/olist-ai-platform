@@ -1,0 +1,68 @@
+{
+    "model_name": "delivery_risk_model",
+    "model_type": "LogisticRegression",
+    "task": "binary_classification",
+    "target": "is_late",
+    "threshold": 0.07,
+    "features": [
+        "order_item_count",
+        "order_total_price",
+        "order_total_freight",
+        "purchase_hour",
+        "purchase_day_of_week",
+        "estimated_delivery_duration_days"
+    ],
+    "preprocessing": {
+        "missing_values": "median_imputation",
+        "scaling": "StandardScaler"
+    },
+    "class_weight": null,
+    "random_state": 42,
+    "training": {
+        "rows": 96476,
+        "late_orders": 6535,
+        "on_time_orders": 89941,
+        "late_rate": 0.06773705377503213,
+        "start_date": "2016-09-15T12:16:38",
+        "end_date": "2018-08-29T15:00:37"
+    },
+    "validation": {
+        "evaluation_script": "evaluate_v13.py",
+        "threshold_selection": "analyze_threshold_stability.py",
+        "test_roc_auc": 0.6984,
+        "test_pr_auc": 0.0633,
+        "test_precision": 0.0489,
+        "test_recall": 0.8309,
+        "test_f1": 0.0924,
+        "test_brier_score": 0.0352,
+        "test_flagged_rate": 0.5931,
+        "test_lift": 1.4
+    },
+    "model_path": "C:\\Users\\user\\Documents\\projects\\olist-ai-platform\\models\\delivery_risk\\delivery_risk_model.joblib",
+    "coefficients": [
+        {
+            "feature": "estimated_delivery_duration_days",
+            "coefficient": -0.18735909759004565
+        },
+        {
+            "feature": "order_total_freight",
+            "coefficient": 0.1744757656766266
+        },
+        {
+            "feature": "order_item_count",
+            "coefficient": -0.16464025991298403
+        },
+        {
+            "feature": "purchase_hour",
+            "coefficient": 0.028120699452425166
+        },
+        {
+            "feature": "order_total_price",
+            "coefficient": 0.01290954640782409
+        },
+        {
+            "feature": "purchase_day_of_week",
+            "coefficient": 0.00521609685174665
+        }
+    ]
+}
