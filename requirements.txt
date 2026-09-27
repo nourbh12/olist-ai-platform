@@ -2,3 +2,11 @@ pandas
 pyarrow
 duckdb
 pyspark
+scikit-learn
+xgboost
+joblib
+fastapi
+uvicorn[standard]
+pydantic
+pytest
+httpx
